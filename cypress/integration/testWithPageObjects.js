@@ -1,6 +1,7 @@
 import { onDatePickerPage } from "../support/page_objects/datepickerPage"
 import { onFormLayoutsPage } from "../support/page_objects/formLayoutsPage"
 import { navigateTo } from "../support/page_objects/navigationPage"
+import { onSmartTablePage } from "../support/page_objects/smartTablePage"
 
 describe('Test With Page Objects', () => {
 
@@ -16,12 +17,17 @@ describe('Test With Page Objects', () => {
         navigateTo.toasterPage()
     })
 
-    it(' should submit Inline and Basic form and select tomorrow date in the calendar', () => {
+    it.only(' should submit Inline and Basic form and select tomorrow date in the calendar', () => {
         navigateTo.formLayoutsPage()
-        onFormLayoutsPage.submitInlineFormWithNameAndEmail('Ivan', 'ivan@email.com')
-        onFormLayoutsPage.submitInlineFormWithEmailAndPassword('Ivan@email.com', 'my-password')
+        onFormLayoutsPage.submitInlineFormWithNameAndEmail('Ivan', 'ivan@gmail.com')
+        onFormLayoutsPage.submitInlineFormWithEmailAndPassword('Ivan@gmail.com', 'my-password')
         navigateTo.datePickerPage()
         onDatePickerPage.selectCommonDatepickerDateDromToday(1)
+        onDatePickerPage.selectDatepickerWithRangeFromToday(7, 14)
+        navigateTo.smartTablePage()
+        onSmartTablePage.addNewRecordWithFirstAndLastName('Ivan', 'Ivanov')
+        onSmartTablePage.updateAgeByFirstName('Ivan', '25')
+        onSmartTablePage.deleteRoxByIndex(1)
     })
 
 })

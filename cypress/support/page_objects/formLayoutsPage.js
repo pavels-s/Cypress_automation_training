@@ -10,7 +10,7 @@ export class FormLayoutsPage {
     }
 
     submitInlineFormWithEmailAndPassword(email, password) {
-        cy.contains('nb-card', 'Inline form').find('form').then( form => {
+        cy.contains('nb-card', 'Basic form').find('form').then( form => {
             cy.wrap(form).find('[placeholder="Email"]').type(email)
             cy.wrap(form).find('[placeholder="Password"]').type(password)
             cy.wrap(form).find('[type="checkbox"]').check({force: true})
